@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bgGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5f7fb"/>
+      <stop offset="0.58" stop-color="#dfe6f2"/>
+      <stop offset="1" stop-color="#56637f"/>
+    </linearGradient>
+    <radialGradient id="tileFill" cx="50%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#274d82"/>
+      <stop offset="0.6" stop-color="#162e60"/>
+      <stop offset="1" stop-color="#0a1029"/>
+    </radialGradient>
+    <linearGradient id="tileStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#87a8d7" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#19284b" stop-opacity="0.95"/>
+    </linearGradient>
+    <radialGradient id="innerGlow" cx="55%" cy="52%" r="42%">
+      <stop offset="0" stop-color="#3bdffb" stop-opacity="0.7"/>
+      <stop offset="0.5" stop-color="#1bb6ea" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#1bb6ea" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lidTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5a616f"/>
+      <stop offset="0.48" stop-color="#7c838f"/>
+      <stop offset="1" stop-color="#a9b0ba"/>
+    </linearGradient>
+    <linearGradient id="baseBody" x1="0" y1="0" x2="1" y2="0.7">
+      <stop offset="0" stop-color="#808893"/>
+      <stop offset="0.45" stop-color="#adb3bc"/>
+      <stop offset="1" stop-color="#8a919d"/>
+    </linearGradient>
+    <linearGradient id="screenGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2d68ff"/>
+      <stop offset="0.45" stop-color="#22d7ff"/>
+      <stop offset="1" stop-color="#86fff4"/>
+    </linearGradient>
+    <radialGradient id="keyboardGlow" cx="45%" cy="38%" r="55%">
+      <stop offset="0" stop-color="#2ff2ff" stop-opacity="0.9"/>
+      <stop offset="0.38" stop-color="#36d1ff" stop-opacity="0.55"/>
+      <stop offset="0.72" stop-color="#2468ff" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#1c2d61" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="28" stdDeviation="28" flood-color="#0b1129" flood-opacity="0.35"/>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#0a0f23" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bgGlow)"/>
+  <ellipse cx="510" cy="936" rx="330" ry="78" fill="#0e1734" opacity="0.28"/>
+
+  <g filter="url(#shadow)">
+    <rect x="80" y="84" width="864" height="864" rx="150" fill="url(#tileFill)"/>
+    <rect x="92" y="96" width="840" height="840" rx="138" fill="none" stroke="url(#tileStroke)" stroke-width="16" opacity="0.86"/>
+    <rect x="110" y="114" width="804" height="804" rx="124" fill="none" stroke="#0b1434" stroke-width="4" opacity="0.85"/>
+    <circle cx="612" cy="498" r="275" fill="url(#innerGlow)"/>
+  </g>
+
+  <g transform="translate(148 248)" filter="url(#softShadow)">
+    <ellipse cx="382" cy="390" rx="246" ry="48" fill="#0cf3ff" opacity="0.23"/>
+
+    <g>
+      <path d="M172 278 L632 278 C646 278 655 289 649 301 L620 356 C615 366 605 372 594 372 L112 372 C101 372 94 366 96 357 L111 302 C114 288 126 278 140 278 Z"
+            fill="url(#baseBody)"/>
+      <path d="M174 286 L627 286 C636 286 642 292 639 300 L615 346 C611 355 602 360 593 360 L122 360 C114 360 108 355 109 347 L121 301 C123 292 131 286 140 286 Z"
+            fill="#b8bec6" opacity="0.72"/>
+      <rect x="189" y="297" width="332" height="53" rx="12" fill="#4f5a67" opacity="0.24"/>
+      <rect x="286" y="343" width="124" height="8" rx="4" fill="#6a7481" opacity="0.62"/>
+
+      <g fill="#5b6470" opacity="0.55">
+        <rect x="205" y="307" width="22" height="16" rx="3"/>
+        <rect x="231" y="307" width="22" height="16" rx="3"/>
+        <rect x="257" y="307" width="22" height="16" rx="3"/>
+        <rect x="283" y="307" width="22" height="16" rx="3"/>
+        <rect x="309" y="307" width="22" height="16" rx="3"/>
+        <rect x="335" y="307" width="22" height="16" rx="3"/>
+        <rect x="361" y="307" width="22" height="16" rx="3"/>
+        <rect x="387" y="307" width="22" height="16" rx="3"/>
+        <rect x="413" y="307" width="22" height="16" rx="3"/>
+        <rect x="439" y="307" width="22" height="16" rx="3"/>
+        <rect x="465" y="307" width="22" height="16" rx="3"/>
+
+        <rect x="214" y="327" width="24" height="16" rx="3"/>
+        <rect x="242" y="327" width="24" height="16" rx="3"/>
+        <rect x="270" y="327" width="24" height="16" rx="3"/>
+        <rect x="298" y="327" width="24" height="16" rx="3"/>
+        <rect x="326" y="327" width="24" height="16" rx="3"/>
+        <rect x="354" y="327" width="24" height="16" rx="3"/>
+        <rect x="382" y="327" width="24" height="16" rx="3"/>
+        <rect x="410" y="327" width="24" height="16" rx="3"/>
+        <rect x="438" y="327" width="24" height="16" rx="3"/>
+        <rect x="466" y="327" width="24" height="16" rx="3"/>
+      </g>
+
+      <path d="M186 298 C248 304 321 319 385 334 C455 351 514 357 594 356" fill="none" stroke="url(#screenGlow)" stroke-width="3" opacity="0.78"/>
+      <ellipse cx="355" cy="322" rx="225" ry="88" fill="url(#keyboardGlow)"/>
+    </g>
+
+    <g>
+      <path d="M167 265 L347 123 C363 111 386 108 405 116 L577 185 C590 190 598 203 594 215 C590 226 579 236 567 241 L389 314 C368 322 344 319 326 307 L161 200 C145 190 141 171 151 156 C155 149 161 144 168 140 Z"
+            fill="#10151f" opacity="0.92"/>
+      <path d="M171 258 L346 124 C361 113 381 111 398 118 L572 184 C582 188 587 197 584 205 C582 211 576 217 569 220 L390 289 C373 296 353 294 339 284 L173 190 C161 182 157 171 165 161 C167 159 169 159 171 158 Z"
+            fill="url(#lidTop)"/>
+      <path d="M387 288 L578 212" fill="none" stroke="url(#screenGlow)" stroke-width="6" stroke-linecap="round" opacity="0.96"/>
+      <path d="M386 296 L574 220" fill="none" stroke="#7ffff7" stroke-width="2.6" stroke-linecap="round" opacity="0.9"/>
+      <path d="M298 202 C314 188 333 176 357 164 C367 159 381 162 389 171 C394 177 394 184 389 188 C371 204 350 219 327 232 C318 238 305 235 297 228 C290 221 290 210 298 202 Z"
+            fill="#20252d" opacity="0.62"/>
+    </g>
+
+    <g fill="#2f3742" opacity="0.85">
+      <rect x="127" y="284" width="24" height="8" rx="3"/>
+      <rect x="157" y="284" width="19" height="8" rx="3"/>
+      <rect x="607" y="294" width="24" height="6" rx="3"/>
+    </g>
+  </g>
+</svg>
