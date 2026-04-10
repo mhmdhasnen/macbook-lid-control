@@ -72,5 +72,4 @@ Use at your own risk. Modifying sleep or clamshell-related behavior may impact b
 
 ## License
 
-MIT (recommended).  
-If you have not added a license file yet, create `LICENSE` with the MIT text.
+MIT
