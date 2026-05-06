@@ -3,7 +3,7 @@ import IOKit
 
 class LidMonitor {
     static let shared = LidMonitor()
-    
+
     private init() {
         NSWorkspace.shared.notificationCenter.addObserver(
             self,
@@ -12,11 +12,9 @@ class LidMonitor {
             object: nil
         )
     }
-    
+
     func start() {
         applyStoredPowerSettings()
-
-        // Just initializing the singleton is enough to start observing
         _ = LidMonitor.shared
     }
 
@@ -25,17 +23,17 @@ class LidMonitor {
     }
 
     func applyPowerSettings(action: LidAction) {
-        let command = powerCommand(for: action)
-
-        runAppleScriptAsAdmin("do shell script \"\(command)\"")
+        let commands = powerCommands(for: action)
+        for args in commands {
+            runPmset(args)
+        }
     }
-    
+
     @objc func receiveSleepNote(note: NSNotification) {
         let action = storedAction()
-        
+
         if action == .shutdown {
             if isClamshellClosed() {
-                // Execute shutdown
                 let source = "tell app \"System Events\" to shut down"
                 if let script = NSAppleScript(source: source) {
                     var error: NSDictionary?
@@ -47,7 +45,7 @@ class LidMonitor {
             }
         }
     }
-    
+
     private func isClamshellClosed() -> Bool {
         var closed = false
         let service = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("IOPMrootDomain"))
@@ -67,23 +65,38 @@ class LidMonitor {
         return LidAction(rawValue: actionStr) ?? .sleep
     }
 
-    private func powerCommand(for action: LidAction) -> String {
+    /// Returns pmset argument arrays for the given action.
+    private func powerCommands(for action: LidAction) -> [[String]] {
         if action == .doNothing {
-            return "/usr/bin/pmset -a sleep 0; /usr/bin/pmset -a disablesleep 1"
+            return [
+                ["-a", "sleep", "0"],
+                ["-a", "disablesleep", "1"]
+            ]
         }
-
-        return "/usr/bin/pmset -a disablesleep 0; /usr/bin/pmset -a sleep 1"
+        return [
+            ["-a", "disablesleep", "0"],
+            ["-a", "sleep", "1"]
+        ]
     }
 
-    private func runAppleScriptAsAdmin(_ scriptStr: String) {
-        let source = "\(scriptStr) with administrator privileges"
-        if let script = NSAppleScript(source: source) {
-            var error: NSDictionary?
-            DispatchQueue.global(qos: .userInitiated).async {
-                script.executeAndReturnError(&error)
-                if let error = error {
-                    print("AppleScript Error: \(error)")
+    /// Runs /usr/bin/pmset via sudo.
+    /// After install.sh sets up the sudoers rule, this won't prompt for a password.
+    private func runPmset(_ args: [String]) {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/sudo")
+        process.arguments = ["/usr/bin/pmset"] + args
+        process.standardOutput = FileHandle.nullDevice
+        process.standardError = FileHandle.nullDevice
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                try process.run()
+                process.waitUntilExit()
+                if process.terminationStatus != 0 {
+                    print("[LidController] pmset failed with status \(process.terminationStatus) for args: \(args)")
                 }
+            } catch {
+                print("[LidController] Failed to run pmset: \(error)")
             }
         }
     }
